@@ -1,0 +1,25 @@
+### Create a new auction
+POST http://localhost:8080/api/v1/auctions
+Content-Type: application/json
+
+{
+  "itemName": "Vintage Watch",
+  "startingBid": 10.00,
+  "maxBid": 1000.00,
+  "effectiveFrom": "2024-01-01T10:00:00Z",
+  "effectiveTo": "2024-01-07T10:00:00Z"
+}
+
+### Get auction by ID
+GET http://localhost:8080/api/v1/auctions/acf5eb68-5520-4325-b146-fad03645961a
+
+
+### Post a bid to an auction
+POST http://localhost:8080/api/v1/bids
+Content-Type: application/json
+
+{
+  "auctionId": "acf5eb68-5520-4325-b146-fad03645961a",
+  "bidUserId": "550e8400-e29b-41d4-a716-446655440000",
+  "bidPrice": 150.00
+}
