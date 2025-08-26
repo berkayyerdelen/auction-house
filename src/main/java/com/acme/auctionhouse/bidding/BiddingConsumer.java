@@ -14,6 +14,6 @@ public class BiddingConsumer {
 
     @KafkaListener(topics = "bids", groupId = "auction-group")
     public void consume(Bidding bidding) {
-        biddingService.placeBid(bidding);
+        biddingService.save(bidding);
     }
 }

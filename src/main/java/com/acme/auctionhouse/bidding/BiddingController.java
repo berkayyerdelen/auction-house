@@ -17,7 +17,7 @@ public class BiddingController {
     }
 
     @PostMapping
-    public UUID createBid(@RequestBody Bidding bidding) {
-        return biddingService.placeBid(bidding);
+    public void createBid(@RequestBody Bidding bidding) {
+         biddingService.placeBid(bidding);
     }
 }

@@ -3,21 +3,21 @@ package com.acme.auctionhouse.bidding;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
 
 @Service
 public class BiddingService {
-    private final BiddingRepository biddingRepository;
     private final KafkaTemplate<String, Bidding> kafkaTemplate;
+    private final BiddingRepository biddingRepository;
 
-    public BiddingService(BiddingRepository biddingRepository, KafkaTemplate<String, Bidding> kafkaTemplate) {
-        this.biddingRepository = biddingRepository;
+    public BiddingService(KafkaTemplate<String, Bidding> kafkaTemplate, BiddingRepository biddingRepository) {
         this.kafkaTemplate = kafkaTemplate;
+        this.biddingRepository = biddingRepository;
     }
 
-    public UUID placeBid(Bidding bidding) {
+    public void placeBid(Bidding bidding) {
         kafkaTemplate.send("bids", bidding);
-        Bidding savedBidding = biddingRepository.save(bidding);
-        return savedBidding.getId();
+    }
+    public void save(Bidding bidding) {
+        biddingRepository.save(bidding);
     }
 }
