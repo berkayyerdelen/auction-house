@@ -20,6 +20,9 @@ Content-Type: application/json
 
 {
   "auctionId": "acf5eb68-5520-4325-b146-fad03645961a",
-  "bidUserId": "550e8400-e29b-41d4-a716-446655440000",
-  "bidPrice": 150.00
+  "bidUserId": "550e8400-e29b-41d4-a716-446655440002",
+  "bidPrice": 200.00
 }
+
+### Get score board for an auction
+GET http://localhost:8080/api/v1/bids/acf5eb68-5520-4325-b146-fad03645961a/score-board
