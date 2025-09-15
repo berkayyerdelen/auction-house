@@ -26,3 +26,37 @@ Content-Type: application/json
 
 ### Get score board for an auction
 GET http://localhost:8080/api/v1/bids/acf5eb68-5520-4325-b146-fad03645961a/score-board
+
+
+
+### Variables
+@host = http://localhost:8080
+@username = ops
+@password = psw
+
+### Test basic endpoint - this will be tracked by metrics filter
+GET {{host}}/api/auctions
+Accept: application/json
+
+### Test endpoint with authentication
+GET {{host}}/actuator/health
+Authorization: Basic {{username}} {{password}}
+
+### Check all metrics collected by your filter
+GET {{host}}/actuator/metrics
+Authorization: Basic {{username}} {{password}}
+
+### Check specific metric: total requests
+GET {{host}}/actuator/metrics/http.requests.total
+Authorization: Basic {{username}} {{password}}
+
+### Check specific metric: request duration
+GET {{host}}/actuator/metrics/http.requests.duration
+Authorization: Basic {{username}} {{password}}
+
+### Check specific metric: max request duration
+GET {{host}}/actuator/metrics/http.requests.max_duration
+Authorization: Basic {{username}} {{password}}
+
+### Test 4xx error (to check 4xx metrics)
+GET {{host}}/non-existent-endpoint
