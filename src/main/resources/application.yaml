@@ -19,3 +19,17 @@ spring:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:
       group-id: auction-house-group
+  security:
+    user:
+      name: ops
+      password: psw
+
+# Actuator Configuration (move outside spring section)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics,health,info
+  endpoint:
+    health:
+      show-details: always
